@@ -1,7 +1,5 @@
 package code
 
-import "fmt"
-
 var errMap = map[string]uint32{
 	"RECORD_OK": 0,
 	//数据不存在
@@ -16,7 +14,6 @@ var errMap = map[string]uint32{
 
 // GetCode 获取错误码
 func GetCode(code string) uint32 {
-	fmt.Println(errMap[code])
 	if status, ok := errMap[code]; ok {
 		return status
 	}
