@@ -5,6 +5,7 @@ import (
 	"client_server/pkg/grpc"
 	"client_server/proto/blog"
 	"context"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -17,6 +18,7 @@ func (c *Category) Index(ctx *gin.Context) {
 	service := grpc.NewBlogService()
 	rep, err := service.Category(context.TODO(), &blog.CategoryIndexRequest{})
 	if err != nil {
+		fmt.Println(err)
 		ctx.JSON(http.StatusBadGateway, c.Format(rep, code.GetCode("RECORD_MICROSERVERERERR"), "error"))
 		return
 	}

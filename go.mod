@@ -10,8 +10,8 @@ require (
 	github.com/jinzhu/now v1.1.3 // indirect
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/registry/consul/v2 v2.9.1
-	github.com/spf13/cast v1.4.1
-	github.com/spf13/viper v1.9.0
+	github.com/spf13/cast v1.3.0
+	github.com/spf13/viper v1.6.3
 	golang.org/x/sys v0.0.0-20211124211545-fe61309f8881 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1
