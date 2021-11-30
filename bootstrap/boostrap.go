@@ -17,5 +17,5 @@ func Initialization() {
 }
 
 func Run()  {
-	router.Run(":8080")
+	router.Run(":10025")
 }
