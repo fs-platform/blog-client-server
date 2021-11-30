@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package go.micro.service.getCaptcha;
+
+option go_package="./;captcha";
+
+service GetCaptcha {
+	rpc Call(Request) returns (Response) {}
+}
+
+message Request {
+
+}
+
+message Response {
+	bytes img = 1;
+}
