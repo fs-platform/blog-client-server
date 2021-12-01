@@ -1,5 +1,16 @@
 package code
 
+import (
+	"encoding/json"
+)
+
+type ServiceError struct {
+	Id     string
+	Code   int
+	Detail string
+	Status string
+}
+
 var errMap = map[string]uint32{
 	"RECORD_OK": 0,
 	//数据不存在
@@ -18,4 +29,14 @@ func GetCode(code string) uint32 {
 		return status
 	}
 	return 0
+}
+
+//处理service 错误信息
+func HandleServiceError(err error) ServiceError {
+	var temp ServiceError
+	jsonErr := json.Unmarshal([]byte(err.Error()), &temp)
+	if jsonErr != nil {
+		return temp
+	}
+	return temp
 }
