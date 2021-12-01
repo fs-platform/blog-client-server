@@ -2,7 +2,10 @@ package bootstrap
 
 import (
 	"client_server/config"
+	config2 "client_server/pkg/config"
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"time"
 )
 
 var router *gin.Engine
@@ -10,12 +13,23 @@ var router *gin.Engine
 func Initialization() {
 	//初始化配置
 	config.Initialization()
+	//注册gin mode
+	if config2.GetString("app.env") == "production" {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	//连接数据库
 	SetupDB()
 	//注册web端路由
 	router = SetupRoute()
 }
 
-func Run()  {
-	router.Run(":10025")
+func Run() {
+	s := &http.Server{
+		Addr:           ":10025",
+		Handler:        router,
+		ReadTimeout:    10 * time.Second,
+		WriteTimeout:   10 * time.Second,
+		MaxHeaderBytes: 1 << 20,
+	}
+	s.ListenAndServe()
 }
