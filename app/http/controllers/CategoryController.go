@@ -14,7 +14,7 @@ type Category struct {
 }
 
 func (c *Category) Index(ctx *gin.Context) {
-	service := grpc.NewBlogService()
+	service := grpc.Service
 	rep, err := service.Category(context.TODO(), &blog.CategoryIndexRequest{})
 	if err != nil {
 		ctx.JSON(http.StatusBadGateway, c.Format(rep, code.GetCode("RECORD_MICROSERVERERERR"), code.HandleServiceError(err).Detail))

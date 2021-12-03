@@ -15,7 +15,7 @@ type Article struct {
 }
 
 func (c *Article) Index(ctx *gin.Context) {
-	service := grpc.NewBlogService()
+	service := grpc.Service
 	id := ctx.Param("id")
 	intId, err := strconv.ParseInt(id, 10, 64)
 	if err != nil {

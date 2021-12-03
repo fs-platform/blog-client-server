@@ -15,7 +15,7 @@ type ArticleDetail struct {
 }
 
 func (c *ArticleDetail) Index(ctx *gin.Context) {
-	service := grpc.NewBlogService()
+	service := grpc.Service
 	id := ctx.Param("articleId")
 	intId, err := strconv.ParseInt(id, 10, 64)
 	rep, err := service.ArticleDetail(context.TODO(), &blog.ArticleDetailRequest{Id: intId})
